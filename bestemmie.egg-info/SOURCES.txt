@@ -1,0 +1,8 @@
+README.rst
+setup.py
+bestemmie/__init__.py
+bestemmie.egg-info/PKG-INFO
+bestemmie.egg-info/SOURCES.txt
+bestemmie.egg-info/dependency_links.txt
+bestemmie.egg-info/not-zip-safe
+bestemmie.egg-info/top_level.txt

@@ -1,0 +1,26 @@
+Metadata-Version: 1.0
+Name: bestemmie
+Version: 0.2
+Summary: Bestemmie.org api
+Home-page: https://github.com/Trafitto/bestemmie.org-API
+Author: Trafitto
+Author-email: develops@trafitto.com
+License: MIT
+Description-Content-Type: UNKNOWN
+Description: Bestemmie.org Python API
+        =============================
+        
+        Simple Bestemmie.org rest api wrapper
+        
+        ----
+        
+        To install ::
+        	pip install bestemmie
+        	
+        ----
+        
+        Use ::
+        	import bestemmie
+        	
+Keywords: bestemmie api bestemmie.org
+Platform: UNKNOWN
