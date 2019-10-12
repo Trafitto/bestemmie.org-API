@@ -1,17 +1,14 @@
 from setuptools import setup
 
-def readme():
-    with open('README.rst') as f:
-        return f.read()
-
-setup(name='bestemmie',
-      version='0.2',
-      description='Bestemmie.org api',
-	  long_description=readme(),
-	  keywords='bestemmie api bestemmie.org',
-      url='https://github.com/Trafitto/bestemmie.org-API',
-      author='Trafitto',
-      author_email='develops@trafitto.com',
-      license='MIT',
-      packages=['bestemmie'],
-      zip_safe=False)
+setup(
+    name='bestemmie',
+    packages=['bestemmie'],
+    version='0.4',
+    description='Bestemmie.org API for lazy person',
+    keywords=['bestemmie', 'api', 'bestemmie.org'],
+    url='https://github.com/Trafitto/bestemmie.org-API',
+    author='Trafitto',
+    install_requires=['requests'],
+    author_email='develop@trafitto.com',
+    license='MIT',
+)

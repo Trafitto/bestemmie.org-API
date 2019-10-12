@@ -1,29 +1,35 @@
-import json
-import urllib.request
+import requests
 
-def all(low=False):
-	response=urllib.request.urlopen("http://www.bestemmie.org/api/bestemmie/?format=json").read()
-	js=json.loads(response)
-	bestemmie =[]
-	for j in js:
-		if low:
-			bestemmie.append(j['bestemmia_low'])
-		else:
-			bestemmie.append(j['bestemmia_upp'])
-	return bestemmie
 
-def bestemmia(low=False):
-	response=urllib.request.urlopen("http://www.bestemmie.org/api/bestemmie/random?format=json").read()
-	js=json.loads(response)
-	for j in js:
-		if low:
-			return j['bestemmia_low']
-		else:
-			return j['bestemmia_upp']
+class Bestemmie:
+    def __init__(self):
+        self.base_url = "http://bestemmie.org/api/{}"
+        self.bestemmie_list = []
 
-def bestemmia_id(id):
-	response=urllib.request.urlopen("http://www.bestemmie.org/api/bestemmie/"+str(id)+"?format=json").read()
-	js=json.loads(response)
-	return js['bestemmia']
-	
-		
+    def random(self):
+        response = requests.get(self.base_url.format("random"))
+        response.raise_for_status()
+
+        return response.json()['bestemmia']
+
+    def all(self):
+
+        url = self.base_url.format("bestemmie")
+
+        while url is not None:
+            response = requests.get(url)
+            response.raise_for_status()
+            self.bestemmie_list.append(response.json()['results'])
+            url = response.json()['next'] or None
+        return self.bestemmie_list
+
+    def add(self, bestemmia, show_succes_message=False):
+        params = {"bestemmia": bestemmia}
+        response = requests.post(
+            self.base_url.format("bestemmie/"), params)
+        response.raise_for_status()
+        if response.status_code == 204:
+            if show_succes_message:
+                print(f"Added: {bestemmia}")
+        else:
+            print(f"There is a problem on adding {bestemmia}")
