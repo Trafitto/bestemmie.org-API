@@ -1,5 +1,6 @@
 # Bestemmie.org API for lazy person
 
+[![Language: python](https://img.shields.io/badge/python-3-blue.svg)](https://www.python.org/)&nbsp;
 
 Simple wrapped [Bestemmie.org](http://bestemmie.org) [api](http://bestemmie.org/api) pip package
 
