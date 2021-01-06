@@ -1,5 +1,7 @@
 import requests
 
+class AddError(Exception):
+    pass
 
 class Bestemmie:
     def __init__(self):
@@ -30,6 +32,6 @@ class Bestemmie:
         response.raise_for_status()
         if response.status_code == 204:
             if show_succes_message:
-                print(f"Added: {bestemmia}")
+                return True
         else:
-            print(f"There is a problem on adding {bestemmia}")
+            raise AddError(f"There is a problem on adding {bestemmia}")
